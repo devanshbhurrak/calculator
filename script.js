@@ -7,7 +7,11 @@ let arr = Array.from(buttons);
 arr.forEach(button => {
     button.addEventListener('click', (e) => {
         if(e.target.innerHTML == '=') {
-            res = eval(res);
+            try {
+                res = eval(res);
+            } catch {
+                res = "Error";
+            }            
         }
         else if(e.target.innerHTML == 'AC') {
             res = "";
@@ -25,12 +29,16 @@ arr.forEach(button => {
 window.addEventListener('keydown', (e) => {
     let key = e.key;
 
-    if(key>='0' && key<='9' || ['*','/','%','-','+'].includes(key)) {
+    if ((key >= '0' && key <= '9') || ['*', '/', '%', '-', '+'].includes(key)) {
         res += key;
         input.value = res;
     }
     else if(key === 'Enter') {
-        res = eval(res);
+        try {
+            res = eval(res);
+        } catch {
+            res = "Error";
+        }        
         input.value = res;
     }
     else if(key === 'Backspace') {

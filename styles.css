@@ -48,3 +48,7 @@ body {
     background-color: #ffd000;
 }
 
+button:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
